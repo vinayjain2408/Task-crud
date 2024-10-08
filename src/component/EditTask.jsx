@@ -13,7 +13,7 @@ const EditTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim() === '') return; // Validation: Title shouldn't be empty
+    if (title.trim() === '') return; 
     dispatch(editTask({ id: Number(id), title }));
     navigate('/');
   };

@@ -9,9 +9,9 @@ const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action) => {
-            const newId = state.tasks.length + 1; 
+            const maxId = state.tasks.length > 0 ? Math.max(...state.tasks.map(task => task.id)) : 0; // Get the maximum current ID
             state.tasks.push({
-                id: newId,
+                id: maxId + 1,
                 title: action.payload,
                 completed: false,
             });
@@ -19,8 +19,8 @@ const tasksSlice = createSlice({
         deleteTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
             state.tasks.forEach((task, index) => {
-                task.id = index + 1; 
-              });
+                task.id = index + 1;
+            });
         },
         toggleTaskStatus: (state, action) => {
             const task = state.tasks.find(task => task.id === action.payload);
@@ -32,7 +32,7 @@ const tasksSlice = createSlice({
             const { id, title } = action.payload;
             const task = state.tasks.find(task => task.id === id);
             if (task) {
-                task.title = title;
+                task.title = title; 
             }
         },
     },

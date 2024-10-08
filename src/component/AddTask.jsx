@@ -5,13 +5,20 @@ import { useNavigate } from 'react-router-dom';
 
 const AddTask = () => {
   const [title, setTitle] = useState('');
+  const [error, setError] = useState(''); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim() === '') return; // Validation: Task title shouldn't be empty
-    dispatch(addTask(title));
+    const trimmedTitle = title.trim();
+    if (trimmedTitle === '') {
+      setError('Task title cannot be empty'); 
+      return; 
+    }
+    dispatch(addTask(trimmedTitle)); 
+    setTitle('');
+    setError(''); 
     navigate('/');
   };
 
@@ -31,6 +38,7 @@ const AddTask = () => {
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter task title"
           />
+          {error && <div className="text-danger mt-2">{error}</div>} {/* Display error message */}
         </div>
         <div className="d-flex justify-content-center">
           <button type="submit" className="btn btn-primary">
@@ -43,5 +51,3 @@ const AddTask = () => {
 };
 
 export default AddTask;
-
-

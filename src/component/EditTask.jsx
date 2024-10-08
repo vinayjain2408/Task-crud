@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { editTask } from '../redux/TasksSlice';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EditTask = () => {
   const { id } = useParams();
@@ -47,44 +46,3 @@ const EditTask = () => {
 };
 
 export default EditTask;
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate, useParams } from 'react-router-dom';
-// import { editTask } from '../redux/TasksSlice';
-
-// const EditTask = () => {
-//   const { id } = useParams();
-//   const tasks = useSelector(state => state.tasks.tasks);
-//   const task = tasks.find(task => task.id === Number(id));
-//   const [title, setTitle] = useState(task?.title || '');
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (title.trim() === '') return;
-//     dispatch(editTask({ id: Number(id), title }));
-//     navigate('/');
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <h2>Edit Task</h2>
-//       <input
-//         type="text"
-//         value={title}
-//         onChange={(e) => setTitle(e.target.value)}
-//       />
-//       <button type="submit">Update Task</button>
-//     </form>
-//   );
-// };
-
-// export default EditTask;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/TasksSlice';
 import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AddTask = () => {
   const [title, setTitle] = useState('');
@@ -46,38 +45,3 @@ const AddTask = () => {
 export default AddTask;
 
 
-
-
-
-// import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { addTask } from '../redux/TasksSlice';
-// import { useNavigate } from 'react-router-dom';
-
-// const AddTask = () => {
-//   const [title, setTitle] = useState('');
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (title.trim() === '') return; // Validation: Task title shouldn't be empty
-//     dispatch(addTask(title));
-//     navigate('/');
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <h1>Add New Task</h1>
-//       <input
-//         type="text"
-//         value={title}
-//         onChange={(e) => setTitle(e.target.value)}
-//         placeholder="Enter task title"
-//       />
-//       <button type="submit">Add Task</button>
-//     </form>
-//   );
-// };
-
-// export default AddTask;
